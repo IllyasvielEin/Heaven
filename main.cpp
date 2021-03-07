@@ -96,16 +96,18 @@ void elimDups(vector<string> &v)
 
 int main()
 {
-    student stu1{1,"Yasuo"};
-    student stu2{2,"Yongen"};
-    vector<student> temp{stu1,stu2};
-    multiset<student, decltype(compareID)*> studentList(compareID);
-    studentList.insert(temp.rbegin(),temp.rend());
-    for ( const auto& i : studentList )
+    string temp1, temp2;
+    multimap<string,string> book;
+    vector<string> author, bookName;
+    while ( cin >> temp1 >> temp2 , temp1 != "-p-")
     {
-        cout << i.ID << " " << i.name << endl;
+        book.insert( make_pair(temp1,temp2) ) ;
     }
 
+    for (const auto& i : book )
+    {
+        cout << i.first << i.second << endl;
+    }
 
     return 0;
 }
