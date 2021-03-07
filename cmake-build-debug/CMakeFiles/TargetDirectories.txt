@@ -1,0 +1,3 @@
+C:/Users/Illya/CLionProjects/Heaven/cmake-build-debug/CMakeFiles/Heaven.dir
+C:/Users/Illya/CLionProjects/Heaven/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Illya/CLionProjects/Heaven/cmake-build-debug/CMakeFiles/rebuild_cache.dir

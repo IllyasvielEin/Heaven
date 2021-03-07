@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/Illya/CLionProjects/Heaven/main.cpp
+iostream
+-
+fstream
+-
+sstream
+-
+vector
+C:/Users/Illya/CLionProjects/Heaven/vector
+initializer_list
+-
+utility
+-
+array
+-
+deque
+-
+list
+-
+forward_list
+-
+algorithm
+-
+numeric
+-
+functional
+-
+iterator
+-
+set
+-
+
