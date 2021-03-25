@@ -80,6 +80,15 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Illya/CLionProjects/Heaven/BinaryTree.h">
+			<Option target="Heaven"/>
+		</Unit>
+		<Unit filename="C:/Users/Illya/CLionProjects/Heaven/LoadingHeader.h">
+			<Option target="Heaven"/>
+		</Unit>
+		<Unit filename="C:/Users/Illya/CLionProjects/Heaven/cmake-build-debug/VirtualFunc.h">
+			<Option target="Heaven"/>
+		</Unit>
 		<Unit filename="C:/Users/Illya/CLionProjects/Heaven/main.cpp">
 			<Option target="Heaven"/>
 		</Unit>

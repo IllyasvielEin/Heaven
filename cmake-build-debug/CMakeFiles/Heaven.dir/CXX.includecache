@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+C:/Users/Illya/CLionProjects/Heaven/LoadingHeader.h
+bits/stdc++.h
+-
+
 C:/Users/Illya/CLionProjects/Heaven/main.cpp
 iostream
 -
@@ -41,4 +45,8 @@ map
 -
 utility
 -
+memory
+-
+LoadingHeader.h
+C:/Users/Illya/CLionProjects/Heaven/LoadingHeader.h
 
