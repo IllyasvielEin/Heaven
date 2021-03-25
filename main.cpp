@@ -41,9 +41,14 @@ public:
             size++;
         }
     }
+    Aggregate& operator=(Aggregate &B)
+    {
+        num = B.num;
+    }
 
     int Find(const Aggregate &B);
     bool isSub(const Aggregate &B);
+    Aggregate input(istream& is);
 private:
     int num[100]{};
     int size = 0;
@@ -91,6 +96,19 @@ int Aggregate::Find(const Aggregate &B)
     return 114514;
 }
 
+Aggregate Aggregate::input(istream& is)
+{
+    int tempNum;
+    vector<int> tempNumArray;
+    while( is >> tempNum,tempNum!=114514 )
+    {
+        tempNumArray.push_back(tempNum);
+    }
+    display(tempNumArray);
+    Aggregate A(tempNumArray);
+    return A;
+}
+
 void distinguish(bool flag)
 {
     if  ( flag )
@@ -105,16 +123,11 @@ void distinguish(bool flag)
 
 int main()
 {
-    int tempNum;
-    vector<int> tempNumArray;
+
 
     cout << "Enter Aggregate A:" << endl;
-    while( cin >> tempNum,tempNum!=114514 )
-    {
-        tempNumArray.push_back(tempNum);
-    }
-    display(tempNumArray);
-    Aggregate A(tempNumArray);
+
+    Aggregate A;
 
     cout << "Enter Aggregate B:" << endl;
     tempNumArray.clear();
