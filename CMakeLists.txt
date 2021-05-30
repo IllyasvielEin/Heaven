@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.17)
+cmake_minimum_required(VERSION 3.19)
 project(Heaven)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Heaven main.cpp LoadingHeader.h BinaryTree.h cmake-build-debug/VirtualFunc.h matrix.h)
+add_executable(Heaven main.cpp matrix.h )
