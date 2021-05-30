@@ -7,195 +7,204 @@
 #include <bits/stdc++.h>
 using namespace std;
 using namespace std::placeholders;
-class student
+
+class task_2
+{
+private:
+    set<int> data;
+
+public:
+    void creative()
+    {
+        int temp;
+        cout << "Enter, 123 to quit:";
+        while ( cin>>temp, temp!=123 )
+        {
+            data.insert(temp);
+        }
+        display();
+    }
+    void display()
+    {
+        cout << "data: ";
+        if ( data.empty() )
+        {
+            cout << "empty." << endl;
+        }
+        for (auto i : data )
+        {
+            cout << i << " ";
+        }
+        cout << endl;
+    }
+    void intersect(const task_2& s2, task_2 store)
+    {
+        for (auto i : data)
+        {
+            if ( s2.data.find(i)!=s2.data.end() )
+            {
+                store.data.insert(i);
+            }
+        }
+        store.display();
+    }
+};
+
+class Demo {
+public:
+    int* data;
+    int size;
+    explicit Demo(int maxn)
+    {
+        size = maxn;
+        data = new int[maxn];
+    }
+    ~Demo() {
+        delete data;
+    }
+};
+void print(const Demo& obj) {
+    cout << obj.data[0] << obj.data[1] << endl;
+}
+
+class Array
+{
+    int* data{};
+    int size = 0;
+public:
+    Array() = default;
+    Array(initializer_list<int> il1)
+    {
+        data = new int[il1.size()];
+        for (auto i: il1)
+        {
+            data[size++] = i;
+        }
+    }
+    ~Array() = default;
+    void show()
+    {
+        for (int i = 0; i < size; i++)
+        {
+            cout << data[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+class Parse
+{
+private:
+    int first{};
+    int last{};
+
+public:
+//    主要思路是利用字符串流进行顺序读取，依据题目意思，前面没有数字（若有，可接着判断之后是否是“-number”）。
+//    更简单的方法大概就是find（-）找到迭代器进行前后字符读取，判断与写入。
+    explicit Parse(const string& s1)
+    {
+        stringstream ss(s1);    //creative a string stream to read.
+        int temp;
+        char tempChar;
+        while (ss.peek() != EOF )   //judge the tail or not.
+        {
+            ss >> tempChar;         //read one after one.
+            if (ss.peek() >= '0' && ss.peek() <= '9' )  //judge digital or not.
+            {
+                ss >> temp; //digital and then read in temp.
+                if ( !first )
+                {
+                    first = temp;
+                }
+                else
+                {
+                    last = temp;
+                }
+            }
+        }
+    }
+
+    int getFirst() const
+    {
+        return first;
+    }
+    int getLast() const
+    {
+        return last;
+    }
+};
+
+class people {
+protected:
+    // 是个人总得有个名字吧
+    string name = "null";
+};
+class student : virtual public people
 {
 public:
-    int ID{};
-    string name{};
+    // 写作业
+    void doHomework()
+    {
+        cout << name << " is doing homework." << endl;
+    }
 };
-inline bool compareID(const student& stu1,const student& stu2)
+class teacher : virtual public people
 {
-    return stu1.ID < stu2.ID;
+public:
+    // 发工资
+    void getPaid()
+    {
+        cout << name << " got paid." << endl;
+    }
+};
+class assistant : public teacher, public student
+{
+
+public:
+
+    // 批改作业
+    void gradeHomework()
+    {
+        cout << name << " grade homework." << endl;
+    }
+};// 助教类，既是学生，也算老师，在学生和老师的基础上，还要批改作业
+
+class life
+{
+public:
+    virtual~ life() = default;
+
+    virtual void canFly() = 0;
+    virtual void flyCan() = 0;
+};
+
+class Yasuo : public life
+{
+private:
+    bool can = false;
+
+public:
+
+    void canFly() override;
+    void flyCan() override;
+};
+
+void Yasuo::canFly()
+{
+    can = true;
 }
 
-bool isShorter(const string a, const string b)
+void Yasuo::flyCan()
 {
-    if ( a.size() < b.size() )
-        return true;
+    if ( can )
+    {
+        cout << "yasuo can Fly!" << endl;
+    }
     else
-        return false;
-}
-bool Smaller(const string& a,int n)
-{
-    if ( a.size() < n )
-        return true;
-    else
-        return false;
-}
-void Clear(vector<string> &v1)
-{
-    fill_n(v1.begin(),v1.size(),"");
-}
-void enter(vector<string> &v)
-{
-    string temp;
-    while ( cin >> temp , temp != "-p-")
     {
-        v.push_back(temp);
-    }
-}
-void display(const vector<int>& v)
-{
-    for ( const auto& i : v )
-    {
-        cout << i;
-    }
-    cout << endl;
-}
-void display(const deque<int>& d)
-{
-    for ( const auto& i : d )
-    {
-        cout << i;
-    }
-    cout << endl;
-}
-void display(vector<string> &v)
-{
-    for ( const auto& i : v )
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-}
-void display(vector<string> &v,vector<string>::iterator& it )
-{
-    for (;it != v.end();it++ )
-    {
-        cout << *it << " ";
-    }
-    cout << endl;
-}
-void elimDups(vector<string> &v)
-{
-    stable_sort(v.begin(),v.end(),isShorter);
-    auto it = unique(v.begin(),v.end());
-    v.erase(it,v.end());
-}
-void input( shared_ptr<vector<int>> *pv )
-{
-    int x;
-    while ( cin >> x )
-    {
-        (*pv)->push_back(x);
+        cout << "yasuo cant Fly!" << endl;
     }
 }
 
-//int i = 1;
-//class numbered
-//{
-//public:
-//    numbered() { a = i++;};
-//    numbered(numbered& );
-//    numbered& operator= (const numbered& );
-//    int a;
-//};
-//numbered &numbered::operator=(const numbered &s) {
-//    a = s.a + 1;
-//    return *this;
-//}
-//
-//numbered::numbered(numbered &s) {
-//    a = i++;
-//}
-//
-//void f(const numbered& s)
-//{
-//    cout << s.a << endl;
-//}
-//class HasPtr
-//{
-//    friend void swap(HasPtr&,HasPtr&);
-//public:
-//    ~HasPtr(){ if ( i == 0 ) delete p; else i--;};
-//    explicit HasPtr(const string& s);
-//    HasPtr(HasPtr&);
-//    HasPtr& operator=(HasPtr);
-//private:
-//    string* p = new string;
-//    int i = 0;
-//};
-//
-//void swap(HasPtr& p1,HasPtr&p2)
-//{
-//    using std::swap;
-//    swap(p1.p,p2.p);
-//    cout << "Swap ptr." << endl;
-//    swap(p1.i,p2.i);
-//    cout << "Swap i." <<endl;
-//}
-//
-//HasPtr::HasPtr(const string& s) {
-//    *p = s;
-//    i++;
-//}
-//
-//HasPtr::HasPtr(HasPtr &inl) {
-//    swap(*this,inl);
-//}
-//
-//HasPtr &HasPtr::operator=(HasPtr pl) {
-//    using std::swap;
-//    swap(*this,pl);
-//    return *this;
-//}
-//class Quote
-//{
-//public:
-//    Quote() = default;
-//    Quote(string &book, string &name,double sales_price)
-//            : bookNo(book), bookName(name), price(sales_price) {};
-//
-//    istream& read(istream&);
-//    string isbn() const { return bookNo; };
-//    string name() const { return bookName; };
-//    virtual double net_price(size_t n) const { return n*price; };
-//    virtual ~Quote() = default;
-//private:
-//    string bookNo;
-//    string bookName;
-//protected:
-//    double price = 0.0;
-//};
-//
-//istream &Quote::read(istream &is) {
-//    cout << "Enter book's isbn ,book name and book price." << endl;
-//    is >> bookNo >> bookName >> price;
-//    return is;
-//}
-//
-//class bulk_Quote : public Quote
-//{
-//public:
-//    bulk_Quote() = default;
-//    bulk_Quote(string &book, string &name,double sales_price, size_t n, double dc)
-//            : Quote(book,name,sales_price), min_qty(n), discount(dc) {};
-//
-//    double net_price(size_t n) const override {
-//        if ( n > min_qty )
-//            return n*price*(1-discount);
-//    } ;
-//private:
-//    size_t min_qty{};
-//    double discount = 0.0;
-//};
-//double print_total(ostream& os, const Quote& item, size_t n)
-//{
-//    double ret = item.net_price(n);
-//    os <<  "Book : " << item.name() << endl
-//       << "ISBN: " << item.isbn() << endl
-//       << "#sold: " << n << " total due: " << ret << endl;
-//    return ret;
-//}
 
 #endif //HEAVEN_LOADINGHEADER_H

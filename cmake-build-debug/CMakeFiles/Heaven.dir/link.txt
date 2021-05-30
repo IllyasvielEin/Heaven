@@ -1,3 +1,3 @@
 "V:\Program Files\CLion 2020.3\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\Heaven.dir/objects.a
 V:\PROGRA~1\AMINGW~1\bin\ar.exe cr CMakeFiles\Heaven.dir/objects.a @CMakeFiles\Heaven.dir\objects1.rsp
-V:\PROGRA~1\AMINGW~1\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\Heaven.dir/objects.a -Wl,--no-whole-archive  -o Heaven.exe -Wl,--out-implib,libHeaven.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Heaven.dir\linklibs.rsp
+V:\PROGRA~1\AMINGW~1\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\Heaven.dir/objects.a -Wl,--no-whole-archive -o Heaven.exe -Wl,--out-implib,libHeaven.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Heaven.dir\linklibs.rsp

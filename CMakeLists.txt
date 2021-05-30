@@ -3,4 +3,4 @@ project(Heaven)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Heaven main.cpp LoadingHeader.h BinaryTree.h cmake-build-debug/VirtualFunc.h)
+add_executable(Heaven main.cpp LoadingHeader.h BinaryTree.h cmake-build-debug/VirtualFunc.h matrix.h)
