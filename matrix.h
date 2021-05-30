@@ -4,20 +4,27 @@
 #include <iomanip>
 #include <iostream>
 #include <random>
-
+#include <crtdbg.h>
+inline void EnableMemLeakCheck()
+{
+    _CrtSetDbgFlag(_CrtSetDbgFlag(_CRTDBG_REPORT_FLAG) | _CRTDBG_LEAK_CHECK_DF);
+}
+#ifdef _DEBUG
+#define new   new(_NORMAL_BLOCK, __FILE__, __LINE__)
+#endif
 class matrix {
 private:
-    // 数据
+
     double** data;
 
 public:
-    // 行数
+
     size_t line;
-    // 列数
+
     size_t col;
-    // 默认构造器
+
     matrix();
-    // 构造m*n矩阵
+
     matrix(size_t line, size_t col);
     // 拷贝构造函数
     matrix(const matrix& obj);
@@ -43,7 +50,8 @@ matrix::matrix(size_t l, size_t c) {
     this->line = l;
     this->col = c;
     // 分配内存空间
-    this->data = new double*[l];
+
+    this->data = new double* [l];
     for (size_t i = 0; i < l; i++) this->data[i] = new double[c];
     // 初始化为零矩阵
     for (size_t i = 0; i < l; i++)
@@ -54,7 +62,7 @@ matrix::matrix(const matrix& obj) {
     this->line = obj.line;
     this->col = obj.col;
     // 分配内存空间
-    this->data = new double*[obj.line];
+    this->data = new double* [obj.line];
     for (size_t i = 0; i < obj.line; i++) this->data[i] = new double[obj.col];
     // 拷贝值
     for (size_t i = 0; i < obj.line; i++)
@@ -79,7 +87,7 @@ matrix matrix::operator=(const matrix& A) {
     this->line = A.line;
     this->col = A.col;
     // 分配内存空间
-    this->data = new double*[A.line];
+    this->data = new double* [A.line];
     for (size_t i = 0; i < A.line; i++) this->data[i] = new double[A.col];
     // 拷贝值
     for (size_t i = 0; i < A.line; i++)
