@@ -175,7 +175,7 @@ public:
     virtual~ life() = default;
 
     virtual void canFly() = 0;
-    virtual void flyCan() = 0;
+    virtual void fly() = 0;
 };
 
 class Yasuo : public life
@@ -186,19 +186,25 @@ private:
 public:
 
     void canFly() override;
-    void flyCan() override;
+    void fly() override;
 };
 
 void Yasuo::canFly()
 {
-    can = true;
+    cout << "Yasuo can fly?<y/n>";
+    char temp;
+    cin >> temp;
+    if( temp == 'y' )
+    {
+        can = true;
+    }
 }
 
-void Yasuo::flyCan()
+void Yasuo::fly()
 {
     if ( can )
     {
-        cout << "yasuo can Fly!" << endl;
+        cout << "Hasaki!" << endl;
     }
     else
     {
